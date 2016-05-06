@@ -79,7 +79,7 @@ $(function() {
 
 	//Set handlers for changeQuote function
 	quoteBox$.click(changeQuote);
-	$(document).keyup(changeQuote)
+	$(document).keyup(changeQuote);
 })
 
 
