@@ -1,0 +1,58 @@
+/** { border: 1px solid black; }*/
+
+body {
+	background-color: #DBDBDB;
+}
+
+#container {
+	width: 600px;
+	margin: auto;
+}
+
+#social {
+	color: white;
+	font-size: 2em;
+	padding: 10px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: white;
+}
+
+.fa-quote-right {
+	color: #DBDBDB;
+}
+
+#quote_box {
+  font-family: "Quicksand", sans-serif;
+  font-size: 3em;
+	background-color: white;
+	margin-top: 100px;
+	padding: 1em;
+	position: relative;
+}
+
+.new_quote {
+	background-color: white;
+	font-family: "Quicksand", sans-serif;
+	font-size: .3em;
+	position: absolute;
+  border: 6px solid #DBDBDB;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.new_quote:focus {
+    outline: 0;
+}
+
+#new_quote {
+	left: -50px;
+	top: -20px;
+}
+
+#bob_ross {
+	right: -50px;
+	bottom: -20px;
+}

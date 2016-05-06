@@ -1,41 +1,30 @@
-/** { border: 1px solid black; }*/
+/** {border: 1px black solid;}*/
+
+/* MOBILE FIRST STYLE */
 
 body {
 	background-color: #DBDBDB;
 }
 
-#container {
-	width: 50%;
-	margin: auto;
-}
-
-#social {
-	color: white;
-	font-size: 2em;
-	padding: 10px;
+#quote_box {
+  font-family: "Quicksand", sans-serif;
+  font-size: 2.2em;
+	background-color: white;
+	padding: .5em;
+	position: relative;
 }
 
 .fa-quote-right {
 	color: #DBDBDB;
 }
 
-#quote_box {
-  font-family: "Quicksand", sans-serif;
-  font-size: 3em;
-	background-color: white;
-	margin-top: 100px;
-	padding: 1em;
-	position: relative;
-}
-
 .new_quote {
 	background-color: white;
+	width: 100%;
 	font-family: "Quicksand", sans-serif;
-	font-size: .3em;
-	position: absolute;
-  border: 6px solid #DBDBDB;
-  padding: 10px 15px;
-  text-align: center;
+	font-size: .5em;
+  border: 0px solid #DBDBDB;
+  text-align: right;
   text-decoration: none;
 }
 
@@ -43,12 +32,52 @@ body {
     outline: 0;
 }
 
-#new_quote {
-	left: -50px;
-	top: -20px;
+#social {
+	color: white;
+	font-size: 3em;
+	padding: 10px;
 }
 
-#bob_ross {
-	right: -50px;
-	bottom: -20px;
+a:link, a:visited, a:hover, a:active {
+    color: white;
+}
+
+@media all and (min-width: 40em) {
+	#container {
+		width: 600px;
+		margin: auto;
+	}
+}
+
+/* EXTENDED SIZE STYLE */
+
+@media all and (min-width: 50em) {
+	#quote_box {
+		margin-top: 100px;
+		font-size: 3em;
+		padding: 1em;
+	}
+
+	.new_quote {
+		border: 6px solid #DBDBDB;
+		width: auto;
+		position: absolute;
+		padding: 10px 15px;
+  	text-align: center;
+  	font-size: .3em;
+	}
+
+	#new_quote {
+		left: -50px;
+		top: -20px;
+	}
+
+	#bob_ross {
+		right: -50px;
+		bottom: -20px;
+	}
+
+	#social {
+		font-size: 2em;
+	}
 }

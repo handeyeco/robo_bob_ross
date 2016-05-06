@@ -23,17 +23,21 @@ var quoteGen = {
 		"This is the hardest part of this method. If you can do this, you can do anything."
 	],
 
+	currentQuote: "",
+
 	returnQuote: function () {
 		var num = Math.floor(Math.random() * this.quotes.length);
-	  return "<div class=\"quote\"><i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i> " + this.quotes[num] + "</div>"
+	  this.currentQuote = this.quotes[num];
+	  return "<div class=\"quote\"><i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i> " + this.currentQuote + "</div>";
 	},
 
-	twit: function (quote) {
-		var twitURL = "https://twitter.com/intent/tweet?text=";
+	twitter: function () {
+		var quote = this.currentQuote;
+		var twitterURL = "https://twitter.com/intent/tweet?text=";
   	quote = quote.split(" ").map(function (e) {
     	return e.replace(/\./g, "%2E").replace(/\'/g, "%27").replace(/\,/g, "%2C").replace(/\:/g, "%3A").replace(/\?/g, "%3F");
   	}).join("%20");
-  	return twitURL + quote + "&hashtags=BobRoss";
+  	return twitterURL + quote + "&hashtags=BobRoss";
 	}
 
 };
@@ -49,21 +53,33 @@ var pageSetup = {
 
 };
 
-//"<div class=\"quote\"><i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i> " + quotes[randomQuoteNum] + " <i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i></div>"
-
 $(function() {
-	$("#quote_display").html(quoteGen.returnQuote());
+	var quoteBox$ = jQuery("#quote_box"),
+			quoteDisplay$ = jQuery("#quote_display"),
+			twitterLink$ = jQuery("#twitter_link");
 
-	$(".new_quote").click(function () {
-		$("#quote_box").fadeOut(function () {
+	function changeQuote () {
+		quoteBox$.fadeOut(function () {
+			//Get new color
 			var currentColor = pageSetup.returnColor();
-			$("#quote_display").html(quoteGen.returnQuote());
+			//Get new quote
+			quoteDisplay$.html(quoteGen.returnQuote());
+			twitterLink$.attr("href", quoteGen.twitter());
+			//Animate site
 			$("body").animate({backgroundColor: currentColor});
 			$(".new_quote").animate({borderColor: currentColor});
 			$(".fa-quote-right").animate({color: currentColor});
 		}).fadeIn();
 		$("#social").fadeOut().fadeIn();
-	});
+	};
+
+	//Set initial quote
+	quoteDisplay$.html(quoteGen.returnQuote());
+	twitterLink$.attr("href", quoteGen.twitter());
+
+	//Set handlers for changeQuote function
+	quoteBox$.click(changeQuote);
+	$(document).keypress(changeQuote);
 })
 
 
