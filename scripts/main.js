@@ -73,7 +73,7 @@ $(function() {
 		$("#social").fadeOut().fadeIn();
 	};
 
-	//Set initial quote
+	//Set quote initially
 	quoteDisplay$.html(quoteGen.returnQuote());
 	twitterLink$.attr("href", quoteGen.twitter());
 
