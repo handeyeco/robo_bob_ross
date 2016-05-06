@@ -6,6 +6,11 @@ body {
 	background-color: #DBDBDB;
 }
 
+#container {
+	max-width: 38em;
+	margin: auto;
+}
+
 #quote_box {
   font-family: "Quicksand", sans-serif;
   font-size: 2.2em;
@@ -42,16 +47,9 @@ a:link, a:visited, a:hover, a:active {
     color: white;
 }
 
-@media all and (min-width: 40em) {
-	#container {
-		width: 600px;
-		margin: auto;
-	}
-}
-
 /* EXTENDED SIZE STYLE */
 
-@media all and (min-width: 50em) {
+@media all and (min-width: 65em) {
 	#quote_box {
 		margin-top: 100px;
 		font-size: 3em;
