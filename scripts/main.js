@@ -35,10 +35,8 @@ var quoteGen = {
 		var quote = this.currentQuote;
 		var twitterURL = "https://twitter.com/intent/tweet?text=";
 		var linkURL = "&url=http://bit.ly/1QUl1mo";
-  	quote = quote.split(" ").map(function (e) {
-    	return e.replace(/\./g, "%2E").replace(/\'/g, "%27").replace(/\,/g, "%2C").replace(/\:/g, "%3A").replace(/\?/g, "%3F");
-  	}).join("%20") + "%20%23BobRoss";
-  	twitterURL = twitterURL + quote
+  	quote = encodeURIComponent(quote + " #BobRoss");
+  	twitterURL = twitterURL + quote;
   	return this.currentQuote.length < 108 ? twitterURL + linkURL : twitterURL;
 	}
 
