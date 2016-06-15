@@ -25,18 +25,26 @@ var quoteGen = {
 
 	currentQuote: "",
 
+	//Selects a random quote by creating a random number between zero and quote arre length
 	returnQuote: function () {
 		var num = Math.floor(Math.random() * this.quotes.length);
 	  this.currentQuote = this.quotes[num];
+
+		//Attches new quote to a div
 	  return "<div class=\"quote\"><i class=\"fa fa-quote-right\" aria-hidden=\"true\"></i> " + this.currentQuote + "</div>";
 	},
 
+	//Create a pre-populated Tweet
 	twitter: function () {
 		var quote = this.currentQuote;
 		var twitterURL = "https://twitter.com/intent/tweet?text=";
 		var linkURL = "&url=http://bit.ly/1QUl1mo";
+
+		//Encode quote to be passed via URI and attach it to Twitter info
   	quote = encodeURIComponent(quote + " #BobRoss");
   	twitterURL = twitterURL + quote;
+
+		//If quote is short enough, add a bitly back to quote generator
   	return this.currentQuote.length < 108 ? twitterURL + linkURL : twitterURL;
 	}
 
@@ -44,6 +52,7 @@ var quoteGen = {
 
 var pageSetup = {
 
+	//List of colors for background changes
 	colors: ["#CBF6FF", "#FDA8A8", "#A8FDBF", "#D5CBFF"],
 
 	returnColor: function () {
@@ -60,33 +69,27 @@ $(function() {
 
 	function changeQuote () {
 		quoteBox$.fadeOut(function () {
-			//Get new color
+
+			//Get new color for background
 			var currentColor = pageSetup.returnColor();
-			//Get new quote
+
+			//Get new quote and Twitter link
 			quoteDisplay$.html(quoteGen.returnQuote());
 			twitterLink$.attr("href", quoteGen.twitter());
-			//Animate site
+
+			//Animate site for quote change
 			$("body").animate({backgroundColor: currentColor});
 			$(".new_quote").animate({borderColor: currentColor});
 			$(".fa-quote-right").animate({color: currentColor});
 		}).fadeIn();
 		$("#social").fadeOut().fadeIn();
-	};
+	}
 
-	//Set quote initially
+	//Set initial quote
 	quoteDisplay$.html(quoteGen.returnQuote());
 	twitterLink$.attr("href", quoteGen.twitter());
 
 	//Set handlers for changeQuote function
 	quoteBox$.click(changeQuote);
 	$(document).keyup(changeQuote);
-})
-
-
-
-
-
-
-
-
-
+});
